@@ -21,11 +21,10 @@ const PORT = process.env.PORT || 5000;
 // 4. Configure the PostgreSQL Connection Pool
 //    Replace the placeholder with your actual password for the 'ecommerce_user'
 const pool = new Pool({
-  user: 'ecommerce_user',
-  host: 'localhost',
-  database: 'ecommerce_db',
-  password: 'Dhn@123', // <--- IMPORTANT: CHANGE THIS
-  port: 5432,
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 // 5. Define our API routes

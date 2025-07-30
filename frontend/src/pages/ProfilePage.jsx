@@ -11,7 +11,7 @@ function ProfilePage() {
     if (user && token) {
       async function fetchProfile() {
         try {
-          const response = await fetch('http://localhost:5000/api/profile', {
+          const response = await fetch('${import.meta.env.VITE_API_BASE_URL}/api/users/profile', {
             headers: { 'x-auth-token': token }
           });
           const data = await response.json();
