@@ -27,7 +27,7 @@ function CartPage() {
 
     try {
       // 2. Send the checkout request to the backend
-      const response = await fetch('${import.meta.env.VITE_API_BASE_URL}/api/users/orders', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/users/orders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
