@@ -19,7 +19,6 @@ const allowedOrigins = [
   https://storied-rolypoly-c9f33c.netlify.app/, // <-- REPLACE with your actual Netlify URL
   'http://localhost:5173'                     // Your local development frontend
 ];
-
 const corsOptions = {
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
@@ -304,7 +303,7 @@ app.get('/api/profile', authMiddleware, async (req, res) => {
 app.post('/api/orders', authMiddleware, async (req, res) => {
   // The 'client' object will be our connection to the DB for the transaction
   const client = await pool.connect();
-  
+});
   try {
     const { cartItems, shipping_address } = req.body;
     const { id: user_id } = req.user; // Get user_id from our auth middleware
