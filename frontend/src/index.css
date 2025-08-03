@@ -1,9 +1,0 @@
-/* src/index.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* ADD THIS BLOCK */
-body {
-  @apply bg-gray-200;
-}

@@ -13,7 +13,27 @@ const { Pool } = require('pg'); // Import the pg Pool object
 
 // 2. Create an instance of an Express application
 const app = express();
-app.use(cors()); // <-- ADD THIS LINE
+// vvv PASTE THIS ENTIRE BLOCK vvv
+
+const allowedOrigins = [
+  https://storied-rolypoly-c9f33c.netlify.app/, // <-- REPLACE with your actual Netlify URL
+  'http://localhost:5173'                     // Your local development frontend
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json()); // <-- ADD THIS LINE
 // 3. Define the port the server will run on
 const PORT = process.env.PORT || 5000;

@@ -1,10 +1,11 @@
 // src/main.jsx
-import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import { AuthProvider } from './context/AuthContext';
-import { CartProvider } from './context/CartContext'; // <-- Import CartProvider
+import { CartProvider } from './context/CartContext';
+
+// ... rest of the file // <-- Import CartProvider
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
